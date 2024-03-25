@@ -162,6 +162,7 @@ checkoutBtn.addEventListener("click", function () {
     const isOpen = checkRestaurantOpen();
     if (!isOpen) {
         
+        // Alerta top
         Toastify({
             text: "Putz, o restaurante está fechado!",
             duration: 3000,
@@ -187,7 +188,7 @@ checkoutBtn.addEventListener("click", function () {
     //Enviar o pedido para api whats
     const cartItems = cart.map((item) => {
         return (
-            `\n *Pedido Nome:* \n ${item.name} \n *Quantidade:* ${item.quantity}\n *Preço:* R$ ${item.price}\n `  
+            `\n *Pedido Nome:* \n ${item.name} \n *Quantidade:* ${item.quantity}\n *Preço:* R$${item.price}\n `  
         )
     }).join("")
 

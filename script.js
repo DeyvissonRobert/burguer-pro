@@ -65,6 +65,7 @@ function addToCart(name, price) {
     }
 
     updateCartModal()
+    totalWhats()
 
 }
 
@@ -85,8 +86,8 @@ function updateCartModal() {
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
                 </div>
 
-                <button class="remove-from-cart-btn" data-name="${item.name}">
-                    Remover
+                <button class="remove-from-cart-btn hover:scale-110 duration-300" data-name="${item.name}">
+                Remover <i class="fa fa-trash"></i>
                 </button>
         
             </div>
@@ -108,6 +109,14 @@ function updateCartModal() {
 
 }
 
+// // Total para o whatsapp
+// function totalWhats() {
+//     let totalW = 0;
+//     totalW += item.price * item.quantity;
+//     return ;
+
+// }
+
 // O tanto de vezes que clicou para add item ao carrinho em veja meu carrinho
 let car = 0;
 
@@ -115,8 +124,18 @@ menu.addEventListener("click", (event) => {
     let vercart = event.target.closest(".add-to-cart-btn")
     if (vercart) {
         cartCounter.innerHTML = (car += 1)
-    }
+    }   
 })
+
+cartItemsContainer.addEventListener("click", (event) => {
+    let removecart = event.target.closest(".remove-from-cart-btn")
+    if (removecart) {
+        cartCounter.innerHTML = (car -= 1)
+    }
+    
+})
+
+// remove-from-cart-btn.addEventListener("click", )
 
 //Funçao para remover o item do carrinho
 cartItemsContainer.addEventListener("click", function (event){
@@ -141,6 +160,7 @@ function removeItemCart(name) {
 
         cart.splice(index, 1);
         updateCartModal();
+        totalWhats()
 
     }
 }
@@ -199,6 +219,7 @@ checkoutBtn.addEventListener("click", function () {
 
     // cart.length = 0;
     cart = [];
+    cartCounter.innerHTML = (car -= car);
     updateCartModal();
 
 })
@@ -207,7 +228,7 @@ checkoutBtn.addEventListener("click", function () {
 function checkRestaurantOpen() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 18 && hora < 22; 
+    return hora >= 18 && hora < 20; 
     //true = restaurante está aberto
 }
 
@@ -215,9 +236,9 @@ const spanItem = document.getElementById("date-span")
 const isOpen = checkRestaurantOpen();
 
 if (isOpen) {
-    spanItem.classList.remove("bg-red-600")
+    spanItem.classList.remove("bg-red-700")
     spanItem.classList.add("bg-green-600")
 } else {
     spanItem.classList.remove("bg-green-600")
-    spanItem.classList.add("bg-red-600")
+    spanItem.classList.add("bg-red-700")
 }

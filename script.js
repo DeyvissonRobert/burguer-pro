@@ -86,7 +86,7 @@ function updateCartModal() {
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
                 </div>
 
-                <button class="remove-from-cart-btn hover:scale-110 duration-300" data-name="${item.name}">
+                <button class="mr-1 remove-from-cart-btn hover:scale-110 duration-300" data-name="${item.name}">
                 Remover <i class="fa fa-trash"></i>
                 </button>
         
